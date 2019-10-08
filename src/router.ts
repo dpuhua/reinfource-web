@@ -4,7 +4,8 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
+  mode: 'history', // 去除路由中的#
   routes: [
     {
       path: '/',
@@ -21,3 +22,10 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  console.log(111111)
+  next()
+})
+
+export default router
