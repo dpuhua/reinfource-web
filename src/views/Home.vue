@@ -14,5 +14,20 @@ import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
     HelloWorld
   }
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  mounted () {
+    console.log(1231111111111111)
+
+    // this.$http.post('user/login', {
+    //   mobile: '18566206787',
+    //   password: '123456'
+    // }).then(ret => {
+    //   console.log(ret)
+    // })
+
+    this.$http.get('user/getUserById/1').then(ret => {
+      console.log(ret)
+    })
+  }
+}
 </script>
