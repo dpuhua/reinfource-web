@@ -1,0 +1,25 @@
+.r-full-width {
+  width: 100%;
+}
+
+@each $align, $size in ("", 5), (top, 5), (right, 5), (bottom, 5), (left, 5) {
+  $i: 100;
+  @while $i > 0 {
+    @if $align== "" {
+      .r-pd-#{$size*$i} {
+        padding: ($size * $i) + px !important;
+      }
+      .r-mg-#{$size*$i} {
+        margin: ($size * $i) + px !important;
+      }
+    } @else {
+      .r-pd-#{$align}-#{$size*$i} {
+        padding-#{$align}: ($size * $i) + px !important;
+      }
+      .r-mg-#{$align}-#{$size*$i} {
+        margin-#{$align}: ($size * $i) + px !important;
+      }
+    }
+    $i: $i - 1;
+  }
+}
