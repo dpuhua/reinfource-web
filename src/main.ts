@@ -8,6 +8,7 @@ import store from './store'
 import cache from './plugins/cache'
 import './registerServiceWorker'
 import './plugins/element'
+import './tools/title'
 import './assets/sass/common.scss'
 import './assets/sass/element-theme.scss'
 

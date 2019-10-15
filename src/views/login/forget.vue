@@ -1,23 +1,20 @@
 <template>
-  <div class="login r-mg-top-100">
-    <el-form :model="loginForm" :rules="rules" ref="loginForm" label-width="70px" class="loginForm form">
-      <div class="login-title r-mg-bottom-10">登录
-        <span class="link r-fr" @click="toReg">注册</span>
+  <div class="forget r-mg-top-100">
+    <el-form :model="forgetForm" :rules="rules" ref="forgetForm" label-width="70px" class="forgetForm form">
+      <div class="forget-title r-mg-bottom-10">忘记密码
+        <span class="link r-fr" @click="toLogin">登录</span>
       </div>
-      <el-form-item label="账号" prop="name">
-        <el-input v-model="loginForm.name" placeholder="用户名/手机号" auto-complete="true"></el-input>
+      <el-form-item label="用户名" prop="userName">
+        <el-input v-model="forgetForm.userName" placeholder="用户名"></el-input>
+      </el-form-item>
+      <el-form-item label="手机号" prop="mobile">
+        <el-input v-model="forgetForm.mobile" placeholder="手机号"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="loginForm.password" placeholder="密码" auto-complete="true"></el-input>
-      </el-form-item>
-      <el-form-item class="r-align-l el-form-item--small">
-        <el-checkbox size="small">记住密码</el-checkbox>
-        <div class="r-fr">
-          <span class="link" @click="toForget">忘记密码?</span>
-        </div>
+        <el-input v-model="forgetForm.password" placeholder="密码"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="submitForm('loginForm')" class="r-full-width">登录</el-button>
+        <el-button type="primary" @click="submitForm('forgetForm')" class="r-full-width">确认</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -32,15 +29,20 @@ import { Component, Vue } from 'vue-property-decorator'
 })
 export default class Home extends Vue {
   /** Variable */
-
-  loginForm: Login = {
-    name: '',
+  forgetForm: Forget = {
+    userName: '',
+    mobile: '',
     password: ''
   }
 
+  title: string = '1213123'
+
   rules: any = {
-    name: [
-      { required: true, message: '账号不能为空' }
+    userName: [
+      { required: true, message: '用户名不能为空' }
+    ],
+    mobile: [
+      { required: true, message: '手机号不能为空' }
     ],
     password: [
       { required: true, message: '请输入密码' }
@@ -52,16 +54,13 @@ export default class Home extends Vue {
   }
 
   /** Methods */
-  toForget () {
-    this.$router.push({ path: '/forget' })
-  }
-  toReg () {
+  toLogin () {
     this.$router.push({ path: '/register' })
   }
   submitForm (formName: string) {
     (this.$refs[formName] as any).validate((valid: string) => {
       if (valid) {
-        this.login()
+        this.forget()
       } else {
         console.log('error submit!!')
         return false
@@ -73,32 +72,30 @@ export default class Home extends Vue {
   }
 
   /** HTTP */
-  login () {
-    this.$store.dispatch('login', this.loginForm).then(res => {
+  forget () {
+    this.$store.dispatch('forget', this.forgetForm).then(res => {
       if (res.data.code === 1) {
         this.$message.success(res.data.msg)
         this.$Cache.setToken(res.data.token)
         this.$Cache.setInfo(res.data.Data)
-        this.$router.push({
-          path: '/'
-        })
       }
     })
   }
 }
-interface Login {
-  name: string,
+interface Forget {
+  userName: string
+  mobile: string
   password: string
 }
 </script>
 
 <style lang="scss" scoped>
-  .login {
+  .forget {
     display: inline-block;
     padding: 20px;
     box-shadow: 0px 0px 3px 0px #c5c3c3;
     border-radius: 3px;
-    .login-title {
+    .forget-title {
       font-size: 18px;
       font-weight: bold;
     }

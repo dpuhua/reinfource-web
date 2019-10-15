@@ -1,58 +1,53 @@
 <template>
-  <div class="login">
-    <el-form :model="loginForm" :rules="rules" ref="loginForm" label-width="100px" class="loginForm">
-      <el-form-item label="账号" prop="name">
-        <el-input v-model="loginForm.name" placeholder="用户名/手机号"></el-input>
-      </el-form-item>
-      <el-form-item label="密码" prop="password">
-        <el-input v-model="loginForm.password" placeholder="密码"></el-input>
-      </el-form-item>
-    </el-form>
-  </div>
+  <el-container class="main">
+    <el-header class="header r-pd-left-200">
+
+      <el-menu :default-active="activeIndex" class="el-menu-demo r-fl v-mg-right-100" mode="horizontal" @select="handleSelect">
+        <el-menu-item v-for="item in menu" :key="item.path" :index="item.path">{{ item.name }}</el-menu-item>
+      </el-menu>
+      Header
+      <avatar-wrap></avatar-wrap>
+    </el-header>
+    <router-view/>
+  </el-container>
+
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
+import AvatarWrap from '@/components/header/avatar.vue'
 
 @Component({
   components: {
+    AvatarWrap
   }
 })
 export default class Home extends Vue {
-  /** Variable */
-
-  loginForm: Login = {
-    name: '',
-    password: ''
-  }
-
-  rules: any = {
-    name: [
-      { required: true, message: '账号不能为空' }
-    ],
-    password: [
-      { required: true, message: '请输入密码' }
-    ]
-  }
-
-  /** Hook */
+  menu: Array<object> = [
+    { name: '我的', path: '/user' },
+    { name: '自定义', path: '/customer' }
+  ]
+  activeIndex: string = ''
   mounted () {
-
+    const reg = /^\/[^/]*/
+    const execPath = reg.exec(this.$route.path) || ['']
+    this.activeIndex = execPath[0]
   }
-
-  /** Methods */
-  submit () {
-    this.$store.dispatch('login')
+  handleSelect (path: string) {
+    this.$router.push({ path })
   }
-
-  /** HTTP */
-}
-interface Login {
-  name: string,
-  password: string
 }
 </script>
 
-<style lang="sass" scoped>
-
+<style lang="scss" scoped>
+  .main {
+    height: 100%;
+    /* background-image: url('~@/assets/images/bg.png');
+    background-repeat: no-repeat;
+    background-size: cover; */
+    .header {
+      box-shadow: 1px 1px 1px 1px #ccc;
+      line-height: 60px;
+    }
+  }
 </style>

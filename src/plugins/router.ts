@@ -8,29 +8,53 @@ const router = new Router({
   mode: 'history', // 去除路由中的#
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-    },
-    {
       path: '/login',
       name: '登录',
       component: () => import(/* webpackChunkName: "login" */ '../views/login/login.vue')
+    },
+    {
+      path: '/register',
+      name: '注册',
+      component: () => import(/* webpackChunkName: "login" */ '../views/login/register.vue')
+    },
+    {
+      path: '/forget',
+      name: '忘记密码',
+      component: () => import(/* webpackChunkName: "login" */ '../views/login/forget.vue')
+    },
+    {
+      path: '/',
+      name: 'home',
+      component: Home,
+      children: [
+        {
+          path: 'user',
+          name: '用户'
+        },
+        {
+          path: 'customer',
+          name: '自定义',
+          component: () => import(/* webpackChunkName: "login" */ '../views/customer/index.vue'),
+          children: [
+            {
+              path: ':id',
+              name: '页面',
+              component: () => import(/* webpackChunkName: "login" */ '../views/login/register.vue')
+            },
+            {
+              path: 'create',
+              name: '创建'
+            }
+          ]
+        }
+      ]
     }
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  const token = Vue.cookies.get('rein-token')
-  const widthPath = /^\/(login|register)/
+  const token = Vue.Cache.getToken()
+  const widthPath = /^\/(login|register|forget)/
   if (!widthPath.test(to.path) && !token) {
     next('/login')
   } else {
