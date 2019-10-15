@@ -6,7 +6,7 @@ const getToken = () => Vue.Cache.getToken()
 
 axios.interceptors.request.use(
   config => {
-    config.baseURL = '//192.168.1.113:8687/api'
+    config.baseURL = process.env.VUE_APP_BASE_URL
     config.withCredentials = false
     config.headers.Authorization = `Bearer ${getToken()}`
     config.timeout = 20000
