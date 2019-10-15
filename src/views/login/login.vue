@@ -61,7 +61,12 @@ export default class Home extends Vue {
 
   /** HTTP */
   login () {
-    this.$store.dispatch('login', this.loginForm)
+    this.$store.dispatch('login', this.loginForm).then(res => {
+      if (res.data.code === 1) {
+        this.$message.success(res.data.msg)
+        this.$Cache.setToken(res.data.token)
+      }
+    })
   }
 }
 interface Login {

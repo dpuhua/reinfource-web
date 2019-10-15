@@ -5,6 +5,7 @@ import axios from './plugins/axios'
 import App from './App.vue'
 import router from './plugins/router'
 import store from './store'
+import cache from './plugins/cache'
 import './registerServiceWorker'
 import './plugins/element'
 import './assets/sass/common.scss'
@@ -15,6 +16,7 @@ Vue.use(vueCookies)
 Vue.config.productionTip = true
 
 Vue.use(vueAxios, axios)
+Vue.use(cache)
 
 new Vue({
   router,

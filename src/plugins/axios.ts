@@ -2,7 +2,7 @@ import axios from 'axios'
 import Vue from 'vue'
 import { Message, MessageBox } from 'element-ui'
 
-const getToken = () => Vue.cookies.get('rein-token')
+const getToken = () => Vue.Cache.getToken()
 
 axios.interceptors.request.use(
   config => {
