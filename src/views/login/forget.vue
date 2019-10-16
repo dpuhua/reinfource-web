@@ -10,7 +10,7 @@
       <el-form-item label="手机号" prop="mobile">
         <el-input @keyup.enter.native="submitForm('forgetForm')" v-model="forgetForm.mobile" placeholder="手机号"></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="password">
+      <el-form-item label="新密码" prop="password">
         <el-input @keyup.enter.native="submitForm('forgetForm')" v-model="forgetForm.password" placeholder="密码"></el-input>
       </el-form-item>
       <el-form-item>
