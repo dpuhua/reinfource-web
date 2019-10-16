@@ -76,8 +76,7 @@ export default class Home extends Vue {
     this.$store.dispatch('forget', this.forgetForm).then(res => {
       if (res.data.code === 1) {
         this.$message.success(res.data.msg)
-        this.$Cache.setToken(res.data.token)
-        this.$Cache.setInfo(res.data.Data)
+        this.toLogin()
       }
     })
   }
