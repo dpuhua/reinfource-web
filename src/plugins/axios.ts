@@ -36,8 +36,6 @@ axios.interceptors.response.use(
       }).then(() => {
 
       })
-    } else if (code === -19) { // token即将过期，需要刷新
-
     } else if (code !== 1) {
       Message({ message: res.data.msg, type: 'error' })
     }

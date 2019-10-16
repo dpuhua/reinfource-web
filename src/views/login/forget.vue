@@ -5,13 +5,13 @@
         <span class="link r-fr" @click="toLogin">登录</span>
       </div>
       <el-form-item label="用户名" prop="userName">
-        <el-input v-model="forgetForm.userName" placeholder="用户名"></el-input>
+        <el-input @keyup.enter.native="submitForm('forgetForm')" v-model="forgetForm.userName" placeholder="用户名"></el-input>
       </el-form-item>
       <el-form-item label="手机号" prop="mobile">
-        <el-input v-model="forgetForm.mobile" placeholder="手机号"></el-input>
+        <el-input @keyup.enter.native="submitForm('forgetForm')" v-model="forgetForm.mobile" placeholder="手机号"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="forgetForm.password" placeholder="密码"></el-input>
+        <el-input @keyup.enter.native="submitForm('forgetForm')" v-model="forgetForm.password" placeholder="密码"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm('forgetForm')" class="r-full-width">确认</el-button>

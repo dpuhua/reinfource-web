@@ -5,13 +5,13 @@
         <span class="link r-fr" @click="toLogin">登录</span>
       </div>
       <el-form-item label="用户名" prop="userName">
-        <el-input v-model="registerForm.userName" placeholder="请输入用户名"></el-input>
+        <el-input @keyup.enter.native="submitForm('registerForm')" v-model="registerForm.userName" placeholder="请输入用户名"></el-input>
       </el-form-item>
       <el-form-item label="手机号" prop="mobile">
-        <el-input v-model="registerForm.mobile" placeholder="请输入手机号"></el-input>
+        <el-input @keyup.enter.native="submitForm('registerForm')" v-model="registerForm.mobile" placeholder="请输入手机号"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="registerForm.password" placeholder="密码"></el-input>
+        <el-input @keyup.enter.native="submitForm('registerForm')" v-model="registerForm.password" placeholder="密码"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm('registerForm')" class="r-full-width">注册</el-button>

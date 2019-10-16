@@ -1,5 +1,5 @@
 <template>
-  <div class="avatar-wrap r-fr" @mousedown="mouseDown" @mouseup="mouseUp">{{ userInfo.userName.slice(0, 1) }}</div>
+  <div class="avatar-wrap r-fr" @mousedown="mouseDown" @mouseup="mouseUp" @click="toLogin">{{ userInfo.userName.slice(0, 1) }}</div>
 </template>
 
 <script lang="ts">
@@ -20,7 +20,6 @@ export default class Home extends Vue {
   mouseDown () {
     this.isDown = true
     this.timeOut = setTimeout(() => {
-      console.log(this.isDown)
       if (this.isDown) {
         this.$router.push({ path: '/customer/create' })
       }
@@ -29,6 +28,9 @@ export default class Home extends Vue {
   mouseUp () {
     this.isDown = false
     clearTimeout(this.timeOut)
+  }
+  toLogin () {
+    this.$router.push({ path: '/login' })
   }
 }
 </script>

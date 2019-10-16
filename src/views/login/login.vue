@@ -5,10 +5,10 @@
         <span class="link r-fr" @click="toReg">注册</span>
       </div>
       <el-form-item label="账号" prop="name">
-        <el-input v-model="loginForm.name" placeholder="用户名/手机号" auto-complete="true"></el-input>
+        <el-input @keyup.enter.native="submitForm('loginForm')" v-model="loginForm.name" placeholder="用户名/手机号"  autocomplete="true"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
-        <el-input v-model="loginForm.password" placeholder="密码" auto-complete="true"></el-input>
+        <el-input @keyup.enter.native="submitForm('loginForm')" v-model="loginForm.password" placeholder="密码"  autocomplete="true"></el-input>
       </el-form-item>
       <el-form-item class="r-align-l el-form-item--small">
         <el-checkbox size="small">记住密码</el-checkbox>
