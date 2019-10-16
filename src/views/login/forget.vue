@@ -55,7 +55,7 @@ export default class Home extends Vue {
 
   /** Methods */
   toLogin () {
-    this.$router.push({ path: '/register' })
+    this.$router.push({ path: '/login' })
   }
   submitForm (formName: string) {
     (this.$refs[formName] as any).validate((valid: string) => {
