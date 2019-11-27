@@ -1,3 +1,8 @@
+/**
+ * author: dph
+ * date: 2019/11/27
+ * description: axios配置
+ */
 import axios from 'axios'
 import Vue from 'vue'
 import { Message, MessageBox } from 'element-ui'

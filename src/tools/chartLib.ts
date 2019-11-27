@@ -1,3 +1,8 @@
+/**
+ * author: dph
+ * date: 2019/11/27
+ * description: echarts类
+ */
 import echart from 'echarts'
 
 export default class SetChart {

@@ -1,3 +1,8 @@
+/**
+ * author: dph
+ * date: 2019/11/27
+ * description: 路由配置
+ */
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home.vue'

@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import vueAxios from 'vue-axios'
-import vueCookies from 'vue-cookies'
-import axios from './plugins/axios'
+import vueAxios from 'vue-axios' // 用于包装axios
+import vueCookies from 'vue-cookies' // cookie操作，目前主要用于保存token
+import axios from './plugins/axios' // 请求接口
 import App from './App.vue'
 import router from './plugins/router'
 import store from './store'

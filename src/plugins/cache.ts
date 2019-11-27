@@ -1,3 +1,8 @@
+/**
+ * author: dph
+ * date: 2019/11/27
+ * description: cookie存储
+ */
 import Vue from 'vue'
 const tokenName: string = 'REIN-TOKEN'
 const infoName: string = 'REIN-INFO'
