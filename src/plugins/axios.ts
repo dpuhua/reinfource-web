@@ -12,8 +12,8 @@ const getToken = () => Vue.Cache.getToken()
 axios.interceptors.request.use(
   config => {
     config.baseURL = process.env.VUE_APP_BASE_URL
-    config.withCredentials = true
-    // config.headers.Authorization = `Bearer ${getToken()}`
+    config.withCredentials = false
+    config.headers.Authorization = `Bearer ${getToken()}`
     config.timeout = 20000
     return config
   },
