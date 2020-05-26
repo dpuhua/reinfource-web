@@ -11,11 +11,16 @@ import { Component, Vue } from 'vue-property-decorator'
   }
 })
 export default class Home extends Vue {
-  userInfo: object = this.$Cache.getInfo()
+  userInfo: object = {
+    userName: ''
+  }
   isDown: boolean = false
   timeOut: any
   mounted () {
-
+    const info = this.$Cache.getInfo()
+    if (info) {
+      this.userInfo = this.$Cache.getInfo()
+    }
   }
   mouseDown () {
     this.isDown = true

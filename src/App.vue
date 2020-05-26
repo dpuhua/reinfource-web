@@ -1,6 +1,11 @@
 <template>
   <div id="app">
-    <router-view/>
+    <div class="main">
+      <router-view/>
+    </div>
+    <div class="footer">
+      <a href="http://www.beian.miit.gov.cn" target="_blank">粤ICP备19092519号</a>
+    </div>
   </div>
 </template>
 
@@ -11,7 +16,7 @@ import { Component, Vue } from 'vue-property-decorator'
 export default class App extends Vue {}
 </script>
 
-<style>
+<style lang="scss" scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -19,5 +24,13 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
   height: 100%;
+  .main {
+    height: 90%;
+  }
+  .footer {
+    height: 10%;
+    padding-top: 30px;
+    background: #f3f3f3;
+  }
 }
 </style>
