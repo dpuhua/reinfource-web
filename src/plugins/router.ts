@@ -59,7 +59,8 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   // 备案问题，不能有登录页
-  return
+  next()
+  return 
   const token = Vue.Cache.getToken()
   const widthPath = /^\/(login|register|forget)/
   if (!widthPath.test(to.path) && !token) {
